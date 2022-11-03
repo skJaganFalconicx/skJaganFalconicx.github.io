@@ -11,11 +11,11 @@ class App{
 
         this.scene = new THREE.Scene();
         this.scene.background = new THREE.Color( 0xaaaaaa );
-
-        this.renderer = new THREE.WebGLRenderer({ antialias: true });
-        this.renderer.setPixelRatio( window.devicePixelRatio );
-        this.renderer.setSize(window.innerWidth, window.innerHeight);
-        container.appendChild(this.renderer.domElement);
+        
+		this.renderer = new THREE.WebGLRenderer({ antialias: true} );
+		this.renderer.setPixelRatio( window.devicePixelRatio );
+		this.renderer.setSize( window.innerWidth, window.innerHeight );
+		container.appendChild( this.renderer.domElement );
 
         this.renderer.setAnimationLoop(this.render.bind(this));
         
@@ -27,7 +27,7 @@ class App{
     }
     
     render() {
-        this.render.render(this.scene, this.camera);
+        this.renderer.render(this.scene, this.camera);
     }
 }
 
