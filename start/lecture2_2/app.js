@@ -12,12 +12,21 @@ class App{
         this.scene = new THREE.Scene();
         this.scene.background = new THREE.Color(0xaaaaaa);
 
+        const light = new THREE.DirectionalLight();
+        light.position.set(1, 1, 1);
+        this.scene.add(light);
+
         this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         this.renderer.setPixelRatio(window.devicePixelRatio);
         this.renderer.setSize(window.innerWidth, window.innerHeight);
         container.appendChild(this.renderer.domElement);
 
         this.renderer.setAnimationLoop(this.render.bind(this));
+
+        const cube = new THREE.BoxBufferGeometry();
+        const material = new THREE.MeshStandardMaterial({ color: 0xff0000 });
+        this.mesh = new THREE.Mesh(cube, material);
+        this.scene.add(this.mesh);
 
         window.addEventListener('resize', this.resize.bind(this));
 	}	
@@ -27,6 +36,7 @@ class App{
     }
     
     render() {
+        this.mesh.rotateY(0.01);
         this.renderer.render(this.scene, this.camera);
     }
 }
