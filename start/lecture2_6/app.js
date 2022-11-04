@@ -76,7 +76,7 @@ class App{
             function (xhr) {
                 self.loadingBar.progress = xhr.loaded / xhr.total;
             },
-            function (error) {
+            function (err) {
                 console.log('Error');
             }
         )
