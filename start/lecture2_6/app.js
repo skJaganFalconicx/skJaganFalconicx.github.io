@@ -29,8 +29,8 @@ class App{
 		this.renderer.setSize( window.innerWidth, window.innerHeight );
         this.renderer.outputEncoding = THREE.sRGBEncoding;
         this.renderer.physicallyCorrectLights = true;
+        container.appendChild(this.renderer.domElement);
         this.setEnvironment();
-		container.appendChild( this.renderer.domElement );
 		
         //Add code here
         this.loadingBar = new LoadingBar();
@@ -64,13 +64,14 @@ class App{
     loadGLTF(){
         const self = this;
         const loader = new GLTFLoader().setPath('../../assets/');
+
         loader.load(
             'office-chair.glb',
             function (gltf) {
             self.chair = gltf.scene;
             self.scene.add(gltf.scene);
             self.loadingBar.visible = false;
-                self.render.setAnimationLoop(self.render.bind(self));
+                self.renderer.setAnimationLoop(self.render.bind(self));
             },
             function (xhr) {
                 self.loadingBar.progress = xhr.loaded / xhr.total;
