@@ -99,7 +99,8 @@ class App{
 	render( ) {   
         this.chair.rotateY(0.01);
         this.raycaster.setFromCamera(this.center, this.camera);
-        this.renderer.render( this.scene, this.camera );
+        this.renderer.render(this.scene, this.camera);
+        console.log(this.raycaster.intersectOebjects(this.scene.children).length);
     }
 }
 
