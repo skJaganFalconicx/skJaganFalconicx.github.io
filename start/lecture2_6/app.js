@@ -106,7 +106,8 @@ class App{
         this.raycaster.setFromCamera(this.pointer, this.camera);
         for (var i in scene.children) {
             if (scene.children[i] instanceof THREE.Mesh) {
-                console.log("mesh");
+                console.log(raycaster.intersectObject(scene.children[i]));
+                
             }
         }
         this.chair.rotateY(0.01);
