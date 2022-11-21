@@ -32,6 +32,7 @@ class App{
         container.appendChild(this.renderer.domElement);
         this.setEnvironment();
 
+        this.pointer = new THREE.Vector2();
         this.raycaster = new THREE.Raycaster();
         this.raycaster.near = 0.1;
         this.raycaster.far = 10;
@@ -44,7 +45,8 @@ class App{
         this.controls.target.set(0, 3.5, 0);
         this.controls.update();
         
-        window.addEventListener('resize', this.resize.bind(this) );
+        window.addEventListener('resize', this.resize.bind(this));
+        window.addEventListener('pointermove', onPointerMove);
 	}	
     
     setEnvironment(){
@@ -88,6 +90,16 @@ class App{
     
     loadFBX(){
     }
+
+  onPointerMove(event) {
+
+    // calculate pointer position in normalized device coordinates
+    // (-1 to +1) for both components
+
+      this.pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
+      this.pointer.y = - (event.clientY / window.innerHeight) * 2 + 1;
+
+  }
     
     resize(){
         this.camera.aspect = window.innerWidth / window.innerHeight;
@@ -96,9 +108,8 @@ class App{
     }
     
     render() {
-        this.center = new THREE.Vector2(window.innerWidth / 2, window.innerHeight / 2);
         this.chair.rotateY(0.01);
-        this.raycaster.setFromCamera(this.center, this.camera);
+        this.raycaster.setFromCamera(this.pointer, this.camera);
         this.renderer.render(this.scene, this.camera);
         console.log(this.raycaster.intersectObjects(this.scene.children).length);
     }
