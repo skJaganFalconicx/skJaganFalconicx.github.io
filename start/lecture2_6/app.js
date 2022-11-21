@@ -101,7 +101,7 @@ class App{
         for (var i in this.scene.children) {
             if (this.scene.children[i] instanceof THREE.Mesh) {
                 console.log(raycaster.intersectObject(this.scene.children[i]));
-                
+                console.log("here");
             }
         }
         this.chair.rotateY(0.01);
