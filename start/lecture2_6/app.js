@@ -44,7 +44,8 @@ class App{
         this.controls.update();
         
         window.addEventListener('resize', this.resize.bind(this));
-        window.addEventListener('pointermove', this.onPointerMove);
+        this.pointer.x = window.innerWidth / 2;
+        this.pointer.y = window.innerHeight / 2;
 	}	
     
     setEnvironment(){
@@ -88,14 +89,7 @@ class App{
     
     loadFBX(){
     }
-
-    onPointerMove(event) {
-
-      this.pointer.x = window.innerWidth / 2;
-      this.pointer.y = window.innerHeight / 2;
-
-  }
-    
+        
     resize(){
         this.camera.aspect = window.innerWidth / window.innerHeight;
         this.camera.updateProjectionMatrix();
@@ -104,7 +98,7 @@ class App{
     
     render() {
         this.raycaster.setFromCamera(this.pointer, this.camera);
-        for (var i in scene.children) {
+        for (var i in this.scene.children) {
             if (scene.children[i] instanceof THREE.Mesh) {
                 console.log(raycaster.intersectObject(scene.children[i]));
                 
