@@ -31,6 +31,10 @@ class App{
         this.renderer.physicallyCorrectLights = true;
         container.appendChild(this.renderer.domElement);
         this.setEnvironment();
+
+        this.raycaster = new THREE.raycaster();
+        this.raycaster.near = 0.1;
+        this.raycaster.far = 10;
 		
         //Add code here
         this.loadingBar = new LoadingBar();
@@ -88,11 +92,13 @@ class App{
     resize(){
         this.camera.aspect = window.innerWidth / window.innerHeight;
         this.camera.updateProjectionMatrix();
-        this.renderer.setSize( window.innerWidth, window.innerHeight );  
+        this.renderer.setSize(window.innerWidth, window.innerHeight);
+        this.center = new THREE.Vector2(window.innerWidth / 2, window.innerHeight / 2);
     }
     
 	render( ) {   
-        this.chair.rotateY( 0.01 );
+        this.chair.rotateY(0.01);
+        this.raycaster.setFromCamera(this.center, this.camera);
         this.renderer.render( this.scene, this.camera );
     }
 }
