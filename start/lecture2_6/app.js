@@ -32,7 +32,7 @@ class App{
         container.appendChild(this.renderer.domElement);
         this.setEnvironment();
 
-        this.raycaster = new THREE.raycaster();
+        this.raycaster = new THREE.Raycaster();
         this.raycaster.near = 0.1;
         this.raycaster.far = 10;
 		
