@@ -46,7 +46,7 @@ class App{
         this.controls.update();
         
         window.addEventListener('resize', this.resize.bind(this));
-        window.addEventListener('pointermove', onPointerMove);
+        window.addEventListener('pointermove', this.onPointerMove);
 	}	
     
     setEnvironment(){
