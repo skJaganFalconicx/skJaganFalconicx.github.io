@@ -99,8 +99,8 @@ class App{
     render() {
         this.raycaster.setFromCamera(this.pointer, this.camera);
         for (var i in this.scene.children) {
-            if (scene.children[i] instanceof THREE.Mesh) {
-                console.log(raycaster.intersectObject(scene.children[i]));
+            if (this.scene.children[i] instanceof THREE.Mesh) {
+                console.log(raycaster.intersectObject(this.scene.children[i]));
                 
             }
         }
