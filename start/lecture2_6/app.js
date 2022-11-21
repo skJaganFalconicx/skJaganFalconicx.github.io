@@ -91,8 +91,8 @@ class App{
 
     onPointerMove(event) {
 
-      this.pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
-      this.pointer.y = - (event.clientY / window.innerHeight) * 2 + 1;
+      this.pointer.x = window.innerWidth / 2;
+      this.pointer.y = window.innerHeight / 2;
 
   }
     
