@@ -4,7 +4,6 @@ import { FBXLoader } from '../../libs/three/jsm/FBXLoader.js';
 import { RGBELoader } from '../../libs/three/jsm/RGBELoader.js';
 import { OrbitControls } from '../../libs/three/jsm/OrbitControls.js';
 import { LoadingBar } from '../../libs/LoadingBar.js';
-import { vector3ToString } from '../../libs/DebugUtils.js';
 
 class App{
 	constructor(){
@@ -35,7 +34,6 @@ class App{
         this.pointer = new THREE.Vector2();
         this.raycaster = new THREE.Raycaster();
         this.raycaster.near = 0.1;
-        this.raycaster.far = 10;
 		
         //Add code here
         this.loadingBar = new LoadingBar();
@@ -91,10 +89,7 @@ class App{
     loadFBX(){
     }
 
-  onPointerMove(event) {
-
-    // calculate pointer position in normalized device coordinates
-    // (-1 to +1) for both components
+    onPointerMove(event) {
 
       this.pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
       this.pointer.y = - (event.clientY / window.innerHeight) * 2 + 1;
@@ -108,10 +103,11 @@ class App{
     }
     
     render() {
-        this.chair.rotateY(0.01);
+        console.log(this.raycaster);
         this.raycaster.setFromCamera(this.pointer, this.camera);
+        console.log(this.raycaster);
+        this.chair.rotateY(0.01);
         this.renderer.render(this.scene, this.camera);
-        console.log(this.raycaster.intersectObjects(this.scene.children).length);
     }
 }
 

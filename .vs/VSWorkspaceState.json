@@ -1,10 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\libs\\three",
-    "\\start",
-    "\\start\\lecture2_6"
+    "\\complete",
+    "\\complete\\lecture6_3"
   ],
-  "SelectedNode": "\\start\\lecture3_6",
+  "SelectedNode": "\\complete\\lecture6_3\\app.js",
   "PreviewInSolutionExplorer": false
 }
