@@ -103,9 +103,12 @@ class App{
     }
     
     render() {
-        console.log(this.raycaster);
         this.raycaster.setFromCamera(this.pointer, this.camera);
-        console.log(this.raycaster);
+        for (var i in scene.children) {
+            if (scene.children[i] instanceof THREE.Mesh) {
+                console.log("mesh");
+            }
+        }
         this.chair.rotateY(0.01);
         this.renderer.render(this.scene, this.camera);
     }
